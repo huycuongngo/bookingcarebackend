@@ -7,3 +7,13 @@ viết code html trong file ejs
 
 #20 
 
+#21
+
+#22: phan tich cac table trong db
+
+#23: create all model in code for tables in database
+
+#24
+
+
+
