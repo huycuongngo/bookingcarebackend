@@ -13,7 +13,7 @@ viết code html trong file ejs
 
 #23: create all model in code for tables in database
 
-#24
+#24: 
 
 
 
