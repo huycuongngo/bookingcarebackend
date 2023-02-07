@@ -1,16 +1,28 @@
 import express from "express";
-import { getHomePage, getCRUD, postCRUD } from '../controllers/homeController'
+import {
+  showUserFormController, createNewUserController, getAllUserController
+} from '../controllers/homeController'
 
 let router = express.Router()
 
 let initWebRoutes = (app) => {
-  router.get("/", getHomePage)
-  router.get("/crud", getCRUD)
-  router.post("/post-crud", postCRUD)
+  // CREATE
+  router.get("/show-user-form", showUserFormController)
+  router.post("/create-user", createNewUserController)
+
+
+  // READ
+  router.get("/get-all-user", getAllUserController)
+
+
+  // UPDATE
+
+
+  // DELETE
 
   return app.use("/", router)
 }
- 
+
 module.exports = {
   initWebRoutes,
 } 

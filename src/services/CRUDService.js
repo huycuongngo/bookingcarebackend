@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt'
 const saltRounds = 10;
 const salt = bcrypt.genSaltSync(saltRounds);
 
-
+//CREATE
 let hashUserPassword = (password) => {
   
   return new Promise(async (resolve, reject) => { 
@@ -17,7 +17,7 @@ let hashUserPassword = (password) => {
   })
 }
 
-let createNewUser = async ({email, password, fullName, address, phone, gender, image, roleId}) => {
+let createNewUserService = async ({email, password, fullName, address, phone, gender, image, roleId}) => {
 
   return new Promise(async (resolve, reject) => {
     try {
@@ -32,7 +32,7 @@ let createNewUser = async ({email, password, fullName, address, phone, gender, i
         image,
         roleId,
       })
-      console.log("successful result", result)
+      console.log("create successfully", result)
       resolve()
     } catch (error) {
       reject(error)
@@ -41,6 +41,35 @@ let createNewUser = async ({email, password, fullName, address, phone, gender, i
 }
 
 
+
+//READ
+const getAllUserService = () => {
+
+  return new Promise(async (resolve, reject) => {
+    try {
+      let data = await db.User.findAll({
+        raw: true
+      })
+      resolve(data)
+    } catch (error) {
+      reject(error)
+    }
+  })
+}
+
+
+// UPDATE
+
+
+
+
+// DELETE
+
+
+
+
+
 module.exports = {
-  createNewUser,
+  createNewUserService,
+  getAllUserService
 }

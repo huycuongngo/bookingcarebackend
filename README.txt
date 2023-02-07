@@ -15,7 +15,9 @@ viết code html trong file ejs
 
 #24: update table users, clinic, specialty, histories
 
-#25: 
+#25: complete the create user API
+
+#26: 
 
 
 

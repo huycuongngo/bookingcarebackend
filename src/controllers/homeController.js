@@ -1,33 +1,39 @@
-import db from '../models/index'
-import { createNewUser } from '../services/CRUDService'
+import { createNewUserService, getAllUserService } from '../services/CRUDService'
 
 
-const getHomePage = async (req, res) => {
-  try {
-    let data = await db.User.findAll()
-    console.log(data)
-    return res.render('homePage.ejs', {
-      data: JSON.stringify(data)
-    })
-  } catch (error) {
-    console.log(error)
-  }
+// CREATE
+const showUserFormController = (req, res) => {
+
+  return res.render("formUser.ejs")
 }
 
-const getCRUD = (req, res) => {
+const createNewUserController = async (req, res) => {
+  // await createNewUserService(req.body)
 
-  return res.render("crud.ejs")
+  return res.send("post - create new user - controller")
 }
 
-const postCRUD = async (req, res) => {
-  await createNewUser(req.body)
 
-  return res.send("post form request to server")
+// READ
+const getAllUserController = async (req, res) => {
+  let data = await getAllUserService()
+
+  return res.render('allUser.ejs', {
+    data
+  })
 }
+
+
+// UPDATE
+
+
+// DELETE
+
+
 
 module.exports = {
-  getHomePage,
-  getCRUD,
-  postCRUD,
+  showUserFormController,
+  createNewUserController,
+  getAllUserController
 }
 
