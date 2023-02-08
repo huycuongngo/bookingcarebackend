@@ -32,7 +32,6 @@ let createNewUserService = async ({ email, password, fullName, address, phone, g
         image,
         roleId,
       })
-      console.log("create user in service", newUser)
       resolve(newUser)
     } catch (error) {
       reject(error)
@@ -60,7 +59,6 @@ const getAllUserService = () => {
 
 // UPDATE
 const getUserByIdService = (userId) => {
-  // console.log("userId", userId)
   return new Promise(async (resolve, reject) => {
     try {
       let user = await db.User.findOne({
@@ -69,7 +67,6 @@ const getUserByIdService = (userId) => {
         },
         raw: true,
       })
-      console.log("user in service", user)
       resolve(user)
     } catch (error) {
       reject(error)
@@ -92,7 +89,6 @@ const editUserService = ({ id, fullName, address }) => {
           }
         },
       )
-      console.log("edit in service")
       resolve()
     } catch (error) {
       reject(error)
@@ -103,7 +99,21 @@ const editUserService = ({ id, fullName, address }) => {
 
 
 // DELETE
+const deleteUserService = (id) => {
 
+  return new Promise(async (resolve, reject) => {
+    try {
+      await db.User.destroy({
+        where: {
+          id
+        }
+      })
+      resolve()
+    } catch (error) {
+      reject(error)
+    }
+  })
+}
 
 
 
@@ -113,4 +123,5 @@ module.exports = {
   getAllUserService,
   getUserByIdService,
   editUserService,
+  deleteUserService,
 }

@@ -1,4 +1,4 @@
-import { createNewUserService, getAllUserService, getUserByIdService, editUserService } from '../services/CRUDService'
+import { createNewUserService, getAllUserService, getUserByIdService, editUserService, deleteUserService } from '../services/CRUDService'
 
 
 // CREATE
@@ -8,7 +8,6 @@ const showUserFormController = (req, res) => {
 }
 
 const createNewUserController = async (req, res) => {
-  console.log(req.body)
   await createNewUserService(req.body)
 
   let users = await getAllUserService()
@@ -65,18 +64,28 @@ const doneEditUserController = async (req, res) => {
 // DELETE
 const deleteUserController = async (req, res) => {
   let userId = req.query.id
+  if (userId) {
+    await deleteUserService(userId)
 
-  return res.send("hello from delete user function")
+    let users = await getAllUserService()
+
+    return res.render('allUser.ejs', {
+      users
+    })
+  } else {
+    return res.send("User Id not valid")
+  }
 }
 
 
 module.exports = {
   showUserFormController,
   createNewUserController,
+
   getAllUserController,
+
   showEditUserFormController,
   doneEditUserController,
 
-  deleteUserController
+  deleteUserController,
 }
-

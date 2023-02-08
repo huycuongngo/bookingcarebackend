@@ -19,8 +19,9 @@ let initWebRoutes = (app) => {
   router.get("/show-edit-user-form", showEditUserFormController)
   router.post("/done-edit-user", doneEditUserController)
 
+
   // DELETE
-  router.put("/delete-user", deleteUserController)
+  router.get("/delete-user", deleteUserController)
 
 
   return app.use("/", router)

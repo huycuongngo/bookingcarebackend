@@ -19,7 +19,9 @@ viết code html trong file ejs
 
 #26: get all user and display on browser
 
-#27: 
+#27: complete the update user API
+
+#28: 
 
 
 
