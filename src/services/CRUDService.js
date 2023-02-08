@@ -6,8 +6,8 @@ const salt = bcrypt.genSaltSync(saltRounds);
 
 //CREATE
 let hashUserPassword = (password) => {
-  
-  return new Promise(async (resolve, reject) => { 
+
+  return new Promise(async (resolve, reject) => {
     try {
       let passwordHashed = await bcrypt.hashSync(password, salt)
       resolve(passwordHashed)
@@ -17,23 +17,23 @@ let hashUserPassword = (password) => {
   })
 }
 
-let createNewUserService = async ({email, password, fullName, address, phone, gender, image, roleId}) => {
+let createNewUserService = async ({ email, password, fullName, address, phone, gender, image, roleId }) => {
 
   return new Promise(async (resolve, reject) => {
     try {
       let passwordHashed = await hashUserPassword(password)
-      let result = await db.User.create({
+      let newUser = await db.User.create({
         email,
         password: passwordHashed,
         fullName,
         address,
         phone,
-        gender: gender = "male" ? true : false,
+        gender: gender == "male" ? true : false,
         image,
         roleId,
       })
-      console.log("create successfully", result)
-      resolve()
+      console.log("create user in service", newUser)
+      resolve(newUser)
     } catch (error) {
       reject(error)
     }
@@ -59,7 +59,46 @@ const getAllUserService = () => {
 
 
 // UPDATE
+const getUserByIdService = (userId) => {
+  // console.log("userId", userId)
+  return new Promise(async (resolve, reject) => {
+    try {
+      let user = await db.User.findOne({
+        where: {
+          id: userId,
+        },
+        raw: true,
+      })
+      console.log("user in service", user)
+      resolve(user)
+    } catch (error) {
+      reject(error)
+    }
+  })
+}
 
+const editUserService = ({ id, fullName, address }) => {
+
+  return new Promise(async (resolve, reject) => {
+    try {
+      await db.User.update(
+        {
+          fullName,
+          address
+        },
+        {
+          where: {
+            id
+          }
+        },
+      )
+      console.log("edit in service")
+      resolve()
+    } catch (error) {
+      reject(error)
+    }
+  })
+}
 
 
 
@@ -71,5 +110,7 @@ const getAllUserService = () => {
 
 module.exports = {
   createNewUserService,
-  getAllUserService
+  getAllUserService,
+  getUserByIdService,
+  editUserService,
 }

@@ -17,7 +17,11 @@ viết code html trong file ejs
 
 #25: complete the create user API
 
-#26: 
+#26: get all user and display on browser
+
+#27: 
 
 
+
+Bootstrap 4.6.2 inside file ejs
 
