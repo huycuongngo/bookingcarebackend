@@ -21,7 +21,13 @@ viết code html trong file ejs
 
 #27: complete the update user API
 
-#28: 
+#28: complete the delete user API
+
+#29 -> #34: reactJS login form
+
+
+
+
 
 
 

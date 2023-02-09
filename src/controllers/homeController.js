@@ -22,10 +22,17 @@ const createNewUserController = async (req, res) => {
 const getAllUserController = async (req, res) => {
   let users = await getAllUserService()
 
+  
+  // browser
   return res.render('allUser.ejs', {
     users
   })
+
+
+  // postman
+  // res.send(users)
 }
+
 
 
 // UPDATE

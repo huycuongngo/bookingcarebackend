@@ -3,6 +3,11 @@ import {
   showUserFormController, createNewUserController, getAllUserController, showEditUserFormController, doneEditUserController, deleteUserController
 } from '../controllers/homeController'
 
+import {
+  loginUserController
+} from '../controllers/userController'
+
+
 let router = express.Router()
 
 let initWebRoutes = (app) => {
@@ -12,7 +17,7 @@ let initWebRoutes = (app) => {
 
 
   // READ
-  router.get("/get-all-user", getAllUserController)
+  router.get("/", getAllUserController)
 
 
   // UPDATE
@@ -22,6 +27,20 @@ let initWebRoutes = (app) => {
 
   // DELETE
   router.get("/delete-user", deleteUserController)
+
+
+
+
+
+  // viet api cho reactjs su dung
+  router.post('/api/login', loginUserController)
+
+
+
+
+
+
+
 
 
   return app.use("/", router)
