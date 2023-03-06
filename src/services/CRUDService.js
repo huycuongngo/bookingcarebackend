@@ -3,7 +3,9 @@ import {
   hashUserPassword,
 } from '../utils/hashPassword'
 
-let createNewUserService = async ({ email, password, fullName, address, phone, gender, image, roleId }) => {
+
+// CREATE
+let createNewUserService = ({ email, password, fullName, address, phone, gender, image, roleId }) => {
 
   return new Promise(async (resolve, reject) => {
     try {

@@ -1,0 +1,43 @@
+### CREATE USER
+POST http://localhost:8080/api/create-user HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "u39@gmail.com",
+  "password": "123",
+  "fullName": "u",
+  "address": "hn",
+  "phone": "23",
+  "gender": "0",
+  "image": "",
+  "roleId": "user"
+}
+
+### LOG IN
+POST http://localhost:8080/api/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "u12@gmail.com",
+  "password": "123"
+}
+
+
+### GET ALL USER
+GET http://localhost:8080/api/get-all-user
+
+### GET USER BY ID
+GET http://localhost:8080/api/get-user/20
+
+
+### UPDATE USER
+PUT http://localhost:8080/api/update-user/2 HTTP/1.1
+Content-Type: application/json
+
+{
+  "fullName": "em",
+  "address": "China"
+}
+
+### DELETE USER
+DELETE http://localhost:8080/api/delete-user/2 HTTP/1.1
